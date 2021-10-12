@@ -6,63 +6,63 @@ let stringOne = "freeCodeCamp is the best place to learn"
 let stringTwo = "frontend and backend development"
 
 // charAt()
-console.log(stringOne.charAt(1))
+console.log('charAt -> ', stringOne.charAt(1))
 
 // charCodeAt()
-console.log(stringOne.charCodeAt(1))
+console.log('charCodeAt -> ', stringOne.charCodeAt(1))
 
 // concat()
-console.log(stringOne.concat(stringTwo))
+console.log('concat -> ', stringOne.concat(stringTwo))
 
 // endsWith()
-console.log(stringOne.endsWith("to"))
+console.log('endsWith -> ', stringOne.endsWith("to"))
 
 // fromCharCode()
-console.log(String.fromCharCode(114))
+console.log('fromCharCode -> ', String.fromCharCode(114))
 
 // includes()
-console.log(stringTwo.includes("end"))
+console.log('includes -> ', stringTwo.includes("end"))
 
 // indexOf()
-console.log(stringTwo.indexOf("end"))
+console.log('indexOf -> ', stringTwo.indexOf("end"))
 
 // lastIndexOf()
-console.log(stringTwo.lastIndexOf("end"))
+console.log('lastIndexOf -> ', stringTwo.lastIndexOf("end"))
 
 // match()
-console.log(stringTwo.match(/end/g))
+console.log('match -> ', stringTwo.match(/end/g))
 
 // repeat()
-console.log(stringOne.repeat(3))
+console.log('repeat -> ', stringOne.repeat(3))
 
 
 // replace()
-console.log(stringTwo.replace(/end/g, "END"))
+console.log('replace -> ', stringTwo.replace(/end/g, "END"))
 
 // search()
-console.log(stringTwo.search("end"))
+console.log('search -> ', stringTwo.search("end"))
 
 // slice()
-console.log(stringTwo.slice(2, 4))
+console.log('charAt -> ', stringTwo.slice(2, 4))
 
 // split()
-console.log(stringOne.split(" "))
+console.log('split -> ', stringOne.split(" "))
 
 // startsWith()
-console.log(stringOne.startsWith("free"))
+console.log('startsWith -> ', stringOne.startsWith("free"))
 
 // substr()
-console.log(stringTwo.substr(2, 4))
+console.log('substr -> ', stringTwo.substr(2, 4))
 
 // substring()
-console.log(stringTwo.substring(2, 4))
+console.log('substring -> ', stringTwo.substring(2, 4))
 
 // toLowerCase()
-console.log(stringOne.toLowerCase())
+console.log('toLowerCase -> ', stringOne.toLowerCase())
 
 // toUpperCase()
-console.log(stringOne.toUpperCase())
+console.log('toUpperCase -> ', stringOne.toUpperCase())
 
 // trim()
 let stringThree = "     Subscribe now!      ";
-console.log(stringThree.trim())
+console.log('trim -> ', stringThree.trim())

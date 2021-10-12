@@ -21,13 +21,40 @@ const currentDate = new Date();
 // console.log('valueOf() ->', currentDate.valueOf());
 
 /* Output to DOM */
-// Find target elements and assign them to a variable
+// Find target elements and assign them to a variabl
 const dateElement = document.querySelector('.date'); // class selector
 
 // Display day date as content of the target element
-dateElement.textContent = currentDate.toString();
+// You last accessed this page on Oct 8 at 8:45pm
+// dateElement.textContent = currentDate.toString();
 
-// String
-// const string = 'Harry Potter is tha bomb!';
+const time = currentDate.toLocaleTimeString();
+const date = currentDate.toString().substr(4,6);
 
-// console.log(string.substr(6, 6));
+// Attribution: 
+// https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
+let hours = currentDate.getHours();
+let minutes = currentDate.getMinutes();
+const ampm = hours >= 12 ? 'pm' : 'am';
+hours = hours % 12;
+hours = hours ? hours : 12; // the hour '0' should be '12'
+minutes = minutes < 10 ? '0'+minutes : minutes;
+const strTime = hours + ':' + minutes + ' ' + ampm;
+
+dateElement.textContent = `You last accessed this page on ${date} at ${strTime}`;
+
+// Create paragraph element variable
+const paraElement = document.querySelector('p');
+
+// Number of characters
+const charElement = document.querySelector('.characters');
+charElement.querySelector('span').textContent = paraElement.textContent.length;
+
+// Number of words
+const wordElement = document.querySelector('.words');
+wordElement.querySelector('span').textContent = paraElement.textContent.split(' ').length;
+
+// Number of times 'wizard' is mentioned
+const wizardElement = document.querySelector('.wizards');
+console.log(paraElement.textContent.match(/wizard/g).length);
+wizardElement.querySelector('span').textContent = paraElement.textContent.match(/wizard/g).length;
