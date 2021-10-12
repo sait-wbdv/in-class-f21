@@ -35,7 +35,17 @@ const date = currentDate.toString().substr(4,6);
 // https://stackoverflow.com/questions/8888491/how-do-you-display-javascript-datetime-in-12-hour-am-pm-format
 let hours = currentDate.getHours();
 let minutes = currentDate.getMinutes();
+
+// Trinary operator
 const ampm = hours >= 12 ? 'pm' : 'am';
+
+// Is the same as this if/else
+// if (hours >= 12) {
+//   const ampm = 'pm';
+// } else {
+//   const ampm = 'am';
+// }
+
 hours = hours % 12;
 hours = hours ? hours : 12; // the hour '0' should be '12'
 minutes = minutes < 10 ? '0'+minutes : minutes;
