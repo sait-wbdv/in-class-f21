@@ -10,6 +10,11 @@ const ratioToPercentage = function(ratio){
   return percentage;
 }
 
+const calculatePortion = function(subTotal = 40, rate = 0.05) {
+  const portion = subTotal * rate;
+  return portion;
+}
+
 // Set tip and tax rates
 const tipRate = .18;
 const tipPercentage = ratioToPercentage(tipRate);
@@ -20,8 +25,8 @@ const taxPercentage = ratioToPercentage(taxRate);
 const calculateTotal = function() {
 
   // Calculate tip and tax amounts
-  const taxAmount = billSubTotal * taxRate;
-  const tipAmount = billSubTotal * tipRate;
+  const taxAmount = calculatePortion(billSubTotal, taxRate);
+  const tipAmount = calculatePortion(billSubTotal, tipRate);
 
   const billTotal = billSubTotal + taxAmount;
   const paymentTotal = billSubTotal + taxAmount + tipAmount;
