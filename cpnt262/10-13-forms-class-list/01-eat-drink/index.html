@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Eat and Drink</title>
+  <script src="eat-drink.js" defer></script>
+  <style>
+    body {
+      font-size: 32px;
+      text-align: center;
+    }
+    .wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      place-items: center;
+    }
+
+    button {
+      font-size: 2rem;
+      margin: 2em;
+      padding: 1rem;
+    }
+
+    .reset {
+      font-size: 1rem;
+      margin: 1rem;
+      padding: .5rem;
+    }
+
+    p {
+      grid-column: span 3;
+    }
+  </style>
+</head>
+<body>
+  <p>Balance: $<span class="balance"></span> <button class="reset">Reset</button></p>
+  <div class="wrapper">
+    <button class="drink-beer">Drink Beer</button>
+    <button class="eat-burger">Eat Burger</button>
+    <button class="drink-pop">Drink Pop</button>
+  </div>
+</body>
+</html>
