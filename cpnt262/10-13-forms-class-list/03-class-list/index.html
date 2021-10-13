@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>classList Toggle</title>
+  <script src="toggle.js" defer></script>
+  <style>
+    /* CSS is for Presentation */
+
+    .circle {
+      /* make it square */
+      width: 30vmin;
+      height: 30vmin;
+
+      /* make it visible */
+      border: 1px solid grey;
+
+      /* make it circular */
+      border-radius: 50%;
+    }
+
+    .fancy {
+      background-color: rebeccapurple;
+      border: 10px solid goldenrod;
+    }
+
+    body {
+      /* Make the body the height of the viewport. This is needed to give Flexbox room to operate. */
+      height: 100vh;
+      
+      /* Center the button in the middle of the viewport. */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    button {
+      /* Make the button bigger, and more... buttony */
+      padding: .5rem 1rem;
+      margin: 1rem;
+      border-radius: 1rem;
+      
+      /* Try to make boring fonts look less boring. */
+      font-size: 1.5rem;
+      font-family: MS Sans Serif, Geneva, sans-serif;
+      font-variant: small-caps;
+      
+      /* By default, buttons don't get the pointy hand when you hover. */
+      cursor: pointer;
+    }
+
+
+  </style>
+</head>
+<body>
+  <!-- HTML is for Content -->
+  <div class="circle has-border"></div>
+  <button>Toggle</button>
+</body>
+</html>
