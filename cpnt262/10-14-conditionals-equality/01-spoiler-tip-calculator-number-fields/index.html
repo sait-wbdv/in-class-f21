@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator Clicks</title>
+  <script src="js/tip-calculator.js" defer></script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Tip Calculator</h1>
+    <form action="/">
+      <legend>Enter bill total and tip rate to calculate your total bill:</legend>
+      <fieldset>
+        <label for="bill-total">Bill Total</label>
+        <input type="number" id="bill-total" name="total" required>
+        <label for="tip-rate">Tip Rate</label>
+        <input type="number" id="tip-rate" name="rate" required>
+        <input type="submit" value="Calculate Total">
+        <h2>Total: <output id="payment"></output></h2>
+      </fieldset>
+    </form>
+  </div>
+</body>
+</html>
