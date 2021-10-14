@@ -39,7 +39,7 @@ const handleSubmit = function(event) {
   } else {
     
     // else 'error'
-    result = "something is wrong :("
+    result = "Please select an operation."
 
   }
 
