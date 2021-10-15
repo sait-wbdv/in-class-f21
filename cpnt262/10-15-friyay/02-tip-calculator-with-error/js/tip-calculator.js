@@ -8,18 +8,15 @@ const calculateTotal = function(event) {
   let tipRate; // ratio between 0 and 1
   let tipAmount; // Currency amount that we are tipping
   let paymentTotal; // bill total plus tipAmount
-  // 1. Declare a default error variable that is false
+  let error = false; // true if service is not one of the accepted values
+
+  // TODO: reset border when user selects an option in the menu
+  form.service.classList.remove('error'); // reset red border
 
   // Assign form values
   billTotal = Number(form.total.value);
 
-  // 2a. Create `service` variable to accept value from select menu
-
   service = form.service.value;
-  // 2b. Refactor `tipPercentage` and `tipRate` based on `service` using conditional statements (if/else/etc)
-  // Bad service -> 12%/0.12
-  // Adequate service -> 18%/0.18
-  // Amazing service -> 23%/0.23
 
   if (service === 'poor') {
     // tipRate 0.12
@@ -38,24 +35,25 @@ const calculateTotal = function(event) {
     tipPercentage = '23%';
   } else {
     // error!!!
-    // TODO: Add proper error handling to tell the user to select a service
-    // tipRate = 0;
-    // tipPercentage = '0%';
     // 2. Set `error` to true
-
+    error = true;
   }
   
   // Calculate tip and tax amounts
-  // 3. Only make the calculation if `error` is false
-  tipAmount = billTotal * tipRate;
-  paymentTotal = billTotal + tipAmount;
-  
-  // console.log(billTotal, tipPercentage, tipRate, paymentTotal);
+  if (!error) {
+    tipAmount = billTotal * tipRate;
+    paymentTotal = billTotal + tipAmount;
 
-  // Output results
-  // TODO: add tip amount to statement
-  // 4. If error is true, set red border and instruct user to select a service
-  form.payment.value = `Tip for $${billTotal} at ${tipPercentage} for a total payment of $${paymentTotal.toFixed(2)}`;
+    // Output results
+    // TODO: add tip amount to statement
+    form.payment.value = `Tip for $${billTotal} at ${tipPercentage} for a total payment of $${paymentTotal.toFixed(2)}`;
+  } else {
+
+    form.payment.value = 'Error - please select a service level!';
+    // Set border to red
+    form.service.classList.add('error');
+
+  }
 
 }
 

@@ -13,3 +13,7 @@ body {
 input, label {
   display: block;
 }
+
+.error {
+  border: 2px solid red;
+}
