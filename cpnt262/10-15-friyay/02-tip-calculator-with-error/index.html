@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tip Calculator with Drop Down Menu</title>
+  <script src="js/tip-calculator.js" defer></script>
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Tip Calculator</h1>
+    <form action="/">
+      <legend>Enter bill total and tip rate to calculate your total bill:</legend>
+      <fieldset>
+        <label for="total">Bill Total</label>
+        <input type="number" id="total" name="total" required>
+        <!-- 1. Replace number field with a select menu (name="service") (options: Bad, Adequate, Amazing) -->
+        <label for="service">Service Level:</label>
+        <select name="service" id="service">
+          <option value="">-- Please select a level of service --</option>
+          <option value="poor">Poor service - 12%</option>
+          <option value="adequate">Adequate service - 18%</option>
+          <option value="amazing">Amazing service - 23%</option>
+        </select>
+        <input type="submit" value="Calculate Total">
+        <h2>Total: <output id="payment"></output></h2>
+      </fieldset>
+    </form>
+  </div>
+</body>
+</html>
