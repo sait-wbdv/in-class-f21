@@ -1,6 +1,8 @@
+// Creat empty variable for HTML output
 let output = '';
 
 const guild = [
+  // Item 1
   {
     // general
     name: 'Gyda',
@@ -37,6 +39,7 @@ const guild = [
       'rope'
     ]
   },
+  // Item 2
   {
     // general
     name: 'Ryan Reynolds',
@@ -68,13 +71,16 @@ const guild = [
   }
 ]
 
+// Loop through each character in the guild (druid and bard)
 guild.forEach(function(character){
+  // Loop through each weapon the character has
   let weapons = '';
 
   character.weapons.forEach(function(weapon){
     weapons += `<li>${weapon.name} (${weapon.type})</li>`;
   });
 
+  // Use lot notation to access character stats
   output += `
   <article>
     <h2>${character.name}</h2>
@@ -89,4 +95,5 @@ guild.forEach(function(character){
 
 });
 
+// Output to web page
 document.querySelector('.guild').innerHTML = output;

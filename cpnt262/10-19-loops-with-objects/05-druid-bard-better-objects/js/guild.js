@@ -1,3 +1,5 @@
+// TODO: Place each character into an single `guild` array so we can loop through them
+// See: /06-druid-bard-bestest-array-of-objects
 const druid = {
   // general
   name: 'Gyda',

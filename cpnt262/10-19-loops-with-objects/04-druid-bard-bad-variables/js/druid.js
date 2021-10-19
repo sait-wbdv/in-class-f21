@@ -1,3 +1,6 @@
+// TODO: Move each variable into a single `druid` object to prevent variable collision
+// See: /05-druid-bard-better-objects
+
 // general
 const name = 'Gyda';
 const race = 'Goliath';
