@@ -1,0 +1,24 @@
+
+
+.gallery ol {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(35ch, 1fr));
+  list-style: none;
+}
+
+.gallery ol > li {
+  border: 1px solid hsl(270deg, 100%, 15%);
+  margin: 1em;
+  padding: 1em;
+  border-radius: 0.5em;
+}
+
+.container  {
+  width: 75ch;
+  border: 1px solid hsl(270deg, 100%, 15%);
+  margin: auto;
+  margin-top: 5em;
+  padding: 1em;
+  border-radius: 0.5em;
+
+}
