@@ -53,10 +53,10 @@ fetch(`http://api.disneyapi.dev/characters/${params.get('character')}`)
         ${displayArray(data.allies)}
       </article>
     `
+    // 4. In the last .then(), display the character
     container.innerHTML = output;
   })
   .catch(function(err){
     // An error or `reject` from any of the above `.then()` blocks will end up here.
     console.log(err);
   });
-// 4. In the last .then(), display the character
