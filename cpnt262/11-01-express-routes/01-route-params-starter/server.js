@@ -2,9 +2,6 @@
 const express = require('express')
 const app = express()
 
-// Serve static files using middleware
-app.use(express.static('public'))
-
 // Define seed data
 // Your data here
 const guild = [];
@@ -14,7 +11,8 @@ app.get('/api/guild', function(request, response) {
   response.send(guild)
 })
 
-app.get('/api/guild/:name', function(request, response) {
+app.get('/api/guild/:id', function(request, response) {
+  console.log(request.params)
   const character = '[name here]'; // Use Array.find() here
   response.send(character)
 })
