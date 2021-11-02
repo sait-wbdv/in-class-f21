@@ -1,9 +1,14 @@
-// Install modules
+/******************/
+/* Import Modules */
+/******************/
+
 const express = require('express')
 const app = express()
 
-// Define seed data
-// Your data here
+/*********************/
+/* Define data array */
+/*********************/
+
 const guild = [
   // Item 1
   {
@@ -57,13 +62,18 @@ const guild = [
   }
 ];
 
-// Dynamic JSON Endpoint
+/*****************/
+/* Define routes */
+/*****************/
+
+// List entry route
 app.get('/api/guild', function(request, response) {
   response.send(guild)
 })
 
+// Item route
 app.get('/api/guild/:name', function(request, response) {
-  
+
   const character = guild.find(function(item){
     if (request.params.name === item.name) {
       return true
@@ -74,10 +84,15 @@ app.get('/api/guild/:name', function(request, response) {
   response.send(character)
 })
 
+/****************************/
+/* Handle 404, start server */
+/****************************/
+
+
 // Handle 404 errors with middleware
 app.use(function(request, response) {
   response.status(404)
-  response.send('404: File Not Found')
+  response.send('<h1>404: File Not Found</h2>')
 });
 
 // Start server
