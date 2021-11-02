@@ -1,6 +1,7 @@
 // Accept command line input
 const inputValue = process.argv[2];
 
+// TODO: move array to local module
 // Define data array
 const guild = [
   // Item 1
@@ -58,6 +59,7 @@ const guild = [
 // Your code here
 console.log(inputValue)
 
+// TODO: clean up our expression
 const matchingCharacter = guild.find(function(item) {
   if (Number(inputValue) === item.wisdom) {
     return true;
