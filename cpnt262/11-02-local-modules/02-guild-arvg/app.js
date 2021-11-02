@@ -3,13 +3,7 @@ const inputString = process.argv[2];
 const guild = require('./guild')
 
 // TODO: clean up our expression
-const matchingCharacter = guild.find(function(item) {
-  if (inputString === item.name) {
-    return true;
-  } else {
-    return false;
-  }
-})
+const matchingCharacter = guild.find(item => inputString === item.name)
 
 // Log the results
 if (matchingCharacter) {
