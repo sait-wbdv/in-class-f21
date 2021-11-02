@@ -69,8 +69,15 @@ const guild = [
 
 // List entry route
 app.get('/api/guild', function(request, response) {
-  // TODO: validate `guild` before sending
-  response.send(guild)
+
+  if (typeof guild !== 'undefined' && Array.isArray(guild)) {
+    // Variable is an array!
+    response.send(guild)
+  } else {
+    response.status(404)
+    response.send({error: 'File Not Found'})
+  }
+
 })
 
 // Item route
