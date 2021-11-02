@@ -82,12 +82,9 @@ app.get('/api/guild', function(request, response) {
 
 // Item route
 app.get('/api/guild/:name', function(request, response) {
-  const character = guild.find(function(item){
-    
-    // TODO: Optimize our expression
-    return request.params.name === item.name
-    
-  }); // Use Array.find() here
+  
+  const character = guild.find(item => request.params.name === item.name) // Use Array.find() here
+
   if (typeof character === 'object' && character !== null) {
     response.send(character)
   } else {
