@@ -5,6 +5,7 @@
 const express = require('express')
 const app = express()
 
+// TODO: Move to local module
 /*********************/
 /* Define data array */
 /*********************/
@@ -68,19 +69,26 @@ const guild = [
 
 // List entry route
 app.get('/api/guild', function(request, response) {
+  // TODO: validate `guild` before sending
   response.send(guild)
 })
 
 // Item route
 app.get('/api/guild/:name', function(request, response) {
+  // TODO: Validate when 
+  // - :name is not found ('tony' or 0) 
+  // - HTML returned when `/api/guild/ryan/whatever`
 
   const character = guild.find(function(item){
+    
+    // TODO: Optimize our expression
     if (request.params.name === item.name) {
       return true
     } else {
       return false
     }
   }); // Use Array.find() here
+  
   response.send(character)
 })
 
@@ -88,11 +96,10 @@ app.get('/api/guild/:name', function(request, response) {
 /* Handle 404, start server */
 /****************************/
 
-
 // Handle 404 errors with middleware
 app.use(function(request, response) {
   response.status(404)
-  response.send('<h1>404: File Not Found</h2>')
+  response.send('<h1>404: File Not Found</h1>')
 });
 
 // Start server
