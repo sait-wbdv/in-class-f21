@@ -83,7 +83,6 @@ app.get('/api/guild', function(request, response) {
 // Item route
 app.get('/api/guild/:name', function(request, response) {
   // TODO: Validate when 
-  // - :name is not found ('tony' or 0) 
   // - HTML returned when `/api/guild/ryan/whatever`
 
   const character = guild.find(function(item){
@@ -95,8 +94,12 @@ app.get('/api/guild/:name', function(request, response) {
       return false
     }
   }); // Use Array.find() here
-  
-  response.send(character)
+  if (typeof character === 'object' && character !== null) {
+    response.send(character)
+  } else {
+    response.status(404)
+    response.send({error: 'File Not Found'})
+  }
 })
 
 /****************************/
