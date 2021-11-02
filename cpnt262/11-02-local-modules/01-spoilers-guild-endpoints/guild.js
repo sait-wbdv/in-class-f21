@@ -1,4 +1,3 @@
-// TODO: Move to local module
 /*********************/
 /* Define data array */
 /*********************/
