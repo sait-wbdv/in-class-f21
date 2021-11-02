@@ -82,9 +82,6 @@ app.get('/api/guild', function(request, response) {
 
 // Item route
 app.get('/api/guild/:name', function(request, response) {
-  // TODO: Validate when 
-  // - HTML returned when `/api/guild/ryan/whatever`
-
   const character = guild.find(function(item){
     
     // TODO: Optimize our expression
@@ -108,8 +105,20 @@ app.get('/api/guild/:name', function(request, response) {
 
 // Handle 404 errors with middleware
 app.use(function(request, response) {
-  response.status(404)
-  response.send('<h1>404: File Not Found</h1>')
+
+  // If path starts with `/api`, send JSON 404
+  if (request.url.startsWith('/api')) {
+
+    response.status(404)
+    response.send({error: 'File Not Found'})
+
+  } else {
+  
+    // else send HTML 404
+    response.status(404)
+    response.send('<h1>404: File Not Found</h1>')
+
+  }
 });
 
 // Start server
