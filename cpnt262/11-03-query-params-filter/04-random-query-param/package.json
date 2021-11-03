@@ -1,0 +1,15 @@
+{
+  "name": "guild-endpoints",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [],
+  "author": "Tony Grimes",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
