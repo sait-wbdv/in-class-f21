@@ -12,43 +12,44 @@ const randomItem = require('./random-item')
 /*****************/
 
 // List entry route
-app.get('/api/guild', function(request, response) {
+// TODO: refactor for arrow functions so we look fashionable
+app.get('/api/guild', (req, res) => {
   let randomCharacter = null;
 
-  if (request.query.filter === 'random') {   
+  if (req.query.filter === 'random') {   
 
     randomCharacter = randomItem(guild)
-    response.send(randomCharacter)
+    res.send(randomCharacter)
 
   } else if (typeof guild !== 'undefined' && Array.isArray(guild)) {
 
     // Variable is an array!
-    response.send(guild)
+    res.send(guild)
 
   } else {
 
-    response.status(404)
-    response.send({error: 'File Not Found'})
+    res.status(404)
+    res.send({error: 'File Not Found'})
     
   }
 
 })
 
 // Item route
-app.get('/api/guild/:name', function(request, response) {
+app.get('/api/guild/:name', (req, res) => {
   let character
 
   if (typeof guild !== 'undefined' && Array.isArray(guild)) {
-    character = guild.find(item => request.params.name === item.name) // Use Array.find() here
+    character = guild.find(item => req.params.name === item.name) // Use Array.find() here
   } else {
     character = null;
   }
   
   if (typeof character === 'object' && character !== null) {
-    response.send(character)
+    res.send(character)
   } else {
-    response.status(404)
-    response.send({error: 'File Not Found'})
+    res.status(404)
+    res.send({error: 'File Not Found'})
   }
 })
 
@@ -57,19 +58,19 @@ app.get('/api/guild/:name', function(request, response) {
 /****************************/
 
 // Handle 404 errors with middleware
-app.use(function(request, response) {
+app.use((req, res) => {
 
   // If path starts with `/api`, send JSON 404
-  if (request.url.startsWith('/api')) {
+  if (req.url.startsWith('/api')) {
 
-    response.status(404)
-    response.send({error: 'File Not Found'})
+    res.status(404)
+    res.send({error: 'File Not Found'})
 
   } else {
   
     // else send HTML 404
-    response.status(404)
-    response.send('<h1>404: File Not Found</h1>')
+    res.status(404)
+    res.send('<h1>404: File Not Found</h1>')
 
   }
 });
