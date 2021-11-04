@@ -16,6 +16,8 @@ app.get('/api/guild', (req, res) => {
   let randomCharacter = null;
   let poisonedCharacter = null;
 
+  /* requests with filter queries */
+
   if (req.query.filter === 'random') {   
 
     randomCharacter = randomItem(guild)
@@ -26,7 +28,11 @@ app.get('/api/guild', (req, res) => {
     poisonedCharacter = guild.filter(item => item.poisoned)
     res.send(poisonedCharacter)
 
-  } else if (typeof guild !== 'undefined' && Array.isArray(guild)) {
+  }
+
+  /* default requests */
+  
+  if (typeof guild !== 'undefined' && Array.isArray(guild)) {
 
     // Variable is an array!
     res.send(guild)
