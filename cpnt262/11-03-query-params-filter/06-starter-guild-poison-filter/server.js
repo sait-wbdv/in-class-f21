@@ -16,7 +16,7 @@ const randomItem = require('./random-item')
 app.get('/api/guild', (req, res) => {
   let randomCharacter = null;
 
-  // TODO: Add support for filter=poisoned and return all guild members that have `poisoned` set to true
+  // TODO: Add support for `?filter=poisoned` and return all guild members that have `poisoned` set to true
   if (req.query.filter === 'random') {   
 
     randomCharacter = randomItem(guild)
