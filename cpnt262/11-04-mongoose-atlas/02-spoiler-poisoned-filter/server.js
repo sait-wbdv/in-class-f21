@@ -13,26 +13,20 @@ const randomItem = require('./random-item')
 
 // List entry route
 app.get('/api/guild', (req, res) => {
-  let randomCharacter = null;
-  let poisonedCharacter = null;
-
-  /* requests with filter queries */
+  let randomCharacter = null; // for Random member filter
+  let poisonedCharacter = null; // for Poisoned member filter
 
   if (req.query.filter === 'random') {   
 
     randomCharacter = randomItem(guild)
     res.send(randomCharacter)
 
-  } else if(req.query.filter === 'poisoned') {
+  } else if (req.query.filter === 'poisoned') {
 
     poisonedCharacter = guild.filter(item => item.poisoned)
     res.send(poisonedCharacter)
 
-  }
-
-  /* default requests */
-  
-  if (typeof guild !== 'undefined' && Array.isArray(guild)) {
+  } else if (typeof guild !== 'undefined' && Array.isArray(guild)) {
 
     // Variable is an array!
     res.send(guild)
@@ -43,6 +37,7 @@ app.get('/api/guild', (req, res) => {
     res.send({error: 'File Not Found'})
     
   }
+
 
 })
 
