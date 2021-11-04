@@ -18,7 +18,7 @@ const guild = [
     wisdom: 16,
     charisma: 10,
     // Modifiers
-    poisoned: true
+    poisoned: false
   },
   // Item 2
   {
@@ -35,7 +35,7 @@ const guild = [
     wisdom: 10,
     charisma: 20,
     // Modifiers
-    poisoned: false
+    poisoned: true
   },
   {
     // general
@@ -51,7 +51,7 @@ const guild = [
     wisdom: 14,
     charisma: 8,
     // Modifiers
-    poisoned: true
+    poisoned: false
   }
 ]
 

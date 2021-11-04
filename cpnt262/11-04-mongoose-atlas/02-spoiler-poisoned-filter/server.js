@@ -38,7 +38,6 @@ app.get('/api/guild', (req, res) => {
     
   }
 
-
 })
 
 // Item route
