@@ -18,7 +18,6 @@ mongoose.connect(
 /******************/
 /* Import Modules */
 /******************/
-const dotenv = require('dotenv').config()
 const express = require('express')
 const app = express()
 
@@ -32,10 +31,24 @@ const randomItem = require('./random-item')
 // const guild = require('./guild')
 
 // 1. Define a schema for Guild Member
+const playerSchema = new mongoose.Schema({
+  id: Number,
+  name: String,
+  class: String,
+  race: String,
+  strength: Number,
+  dexterity: Number,
+  constitution: Number,
+  intelligence: Number,
+  wisdom: Number,
+  charisma: Number,
+  poisoned: Boolean
+});
 
 // 2. Compile our schema into a model
+const Player = mongoose.model('Player', playerSchema);
 
-// 3. Define `guild` array of objects using our model
+
 
 /*****************/
 /* Define routes */
@@ -43,49 +56,63 @@ const randomItem = require('./random-item')
 
 // List entry route
 app.get('/api/guild', (req, res) => {
-  let randomCharacter = null; // for Random member filter
-  let poisonedCharacter = null; // for Poisoned member filter
+  // 3. Define `guild` array of objects using our model
+  let guild = null
+  Player.find((err, data) => {
+    if (err) {
+      console.log(err)
+      res.sendStatus(404);
+    }
+    else {
+      guild = data
 
-  if (req.query.filter === 'random') {   
-
-    randomCharacter = randomItem(guild)
-    res.send(randomCharacter)
-
-  } else if (req.query.filter === 'poisoned') {
-
-    poisonedCharacter = guild.filter(item => item.poisoned)
-    res.send(poisonedCharacter)
-
-  } else if (typeof guild !== 'undefined' && Array.isArray(guild)) {
-
-    // Variable is an array!
-    res.send(guild)
-
-  } else {
-
-    res.status(404)
-    res.send({error: 'File Not Found'})
+      let randomCharacter = null; // for Random member filter
+      let poisonedCharacter = null; // for Poisoned member filter
     
-  }
+      if (req.query.filter === 'random') {   
+    
+        randomCharacter = randomItem(guild)
+        res.send(randomCharacter)
+    
+      } else if (req.query.filter === 'poisoned') {
+    
+        poisonedCharacter = guild.filter(item => item.poisoned)
+        res.send(poisonedCharacter)
+    
+      } else if (typeof guild !== 'undefined' && Array.isArray(guild)) {
+    
+        // Variable is an array!
+        res.send(guild)
+    
+      } else {
+    
+        res.status(404)
+        res.send({error: 'File Not Found'})
+        
+      }
+    }
+  });
 
 })
 
 // Item route
 app.get('/api/guild/:name', (req, res) => {
   let character
-
-  if (typeof guild !== 'undefined' && Array.isArray(guild)) {
-    character = guild.find(item => req.params.name === item.name) // Use Array.find() here
-  } else {
-    character = null;
-  }
-  
-  if (typeof character === 'object' && character !== null) {
-    res.send(character)
-  } else {
-    res.status(404)
-    res.send({error: 'File Not Found'})
-  }
+  Player.findOne({name: req.params.name}, function(err, data) {
+    if(err) {
+      console.log(err)
+      res.sendStatus(404);
+    } else {
+      character = data
+      console.log(character)
+      if (typeof character === 'object' && character !== null) {
+        res.send(character)
+      } else {
+        res.status(404)
+        res.send({error: 'File Not Found'})
+      }
+    }
+  });
 })
 
 /****************************/
