@@ -37,7 +37,7 @@ router.get('/guild', (req, res) => {
     console.log(guild)
 
     res.status(404)
-    res.send({error: 'File Not Fooound'})
+    res.send({error: 'File Not Found'})
     
   }
 
