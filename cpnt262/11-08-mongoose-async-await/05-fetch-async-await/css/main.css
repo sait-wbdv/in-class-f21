@@ -1,0 +1,13 @@
+img {
+  max-width: 50vw;
+}
+
+figure {
+  width: min-content;
+  margin: auto;
+}
+
+button {
+  display: block;
+  margin: auto;
+}
