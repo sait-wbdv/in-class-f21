@@ -64,9 +64,15 @@ app.get('/api/guild', async (request, response) => {
 app.get('/api/guild/:name', async (request, response) => {
 
   // TODO: try/catch null response when name doesn't exist
-  const player = await Player.findOne({name: request.params.name})
-
-  response.send(player)
+  try {
+    const player = await Player.findOne({name: request.params.name})
+    if (!player) {
+      throw new Error()
+    }
+    response.send(player)
+  } catch(err) {
+    response.send({error: 'Player Not Found'})
+  }
   
 })
 
