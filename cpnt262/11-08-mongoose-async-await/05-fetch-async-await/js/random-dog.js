@@ -72,7 +72,7 @@ const button = document.querySelector('button');
 
 button.addEventListener('click', async () => {
   try {
-    const response = await fetch('https://random.dog/wof.json');
+    const response = await fetch('https://random.dog/woof.json');
 
     if (!response.ok) {
       throw new Error('Not 200 OK');
