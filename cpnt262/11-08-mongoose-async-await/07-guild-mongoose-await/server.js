@@ -8,7 +8,10 @@ const dotenv = require('dotenv').config();
 const express = require('express')
 const app = express()
 
-// 2. Connect to Atlas
+/********************/
+/* Connect to Atlas */
+/********************/
+
 mongoose.connect(
   process.env.MONGODB_URL,
   { useUnifiedTopology: true, useNewUrlParser: true },
@@ -19,11 +22,11 @@ mongoose.connect(
   .catch(function(err){
     console.log(err)
   });
-  
-// 3a. Replace the local module with mongoose model
-// const guild = require('./guild')
 
-// 3b. Define our schema 
+/*****************/
+/* Define Schema */
+/*****************/
+
 const playerSchema = new mongoose.Schema({
   id: Number,
   name: String,
@@ -38,7 +41,10 @@ const playerSchema = new mongoose.Schema({
   poisoned: Boolean
 })
 
-// 3c. compile our model
+/*****************/
+/* Compile Model */
+/*****************/
+
 const Player = mongoose.model('Player', playerSchema)
 
 /*****************/
@@ -46,10 +52,8 @@ const Player = mongoose.model('Player', playerSchema)
 /*****************/
 
 // List entry route
-// 4a. Convert the app.get() callback with async
 app.get('/api/guild', async (request, response) => {
 
-  // 4b. Request and send Atlas `players` data with model.find()
   const players = await Player.find()
 
   response.send(players)
@@ -57,10 +61,9 @@ app.get('/api/guild', async (request, response) => {
 })
 
 // Item route
-// 5a. Convert the app.get() callback with async
 app.get('/api/guild/:name', async (request, response) => {
 
-  // 5b. Request and send Atlas `player` data with model.findOne()
+  // TODO: try/catch null response when name doesn't exist
   const player = await Player.findOne({name: request.params.name})
 
   response.send(player)

@@ -2,6 +2,7 @@
 /* Define data array */
 /*********************/
 
+// Replaced with Mongoose data
 const guild = [
   // Item 1
   {
