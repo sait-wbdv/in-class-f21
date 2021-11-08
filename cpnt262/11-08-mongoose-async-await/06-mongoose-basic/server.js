@@ -1,6 +1,14 @@
 
+/***********************/
+/* Require our modules */
+/***********************/
+
 const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
+
+/********************/
+/* Connect to Atlas */
+/********************/
 
 mongoose.connect(
   process.env.MONGODB_URL,
@@ -12,6 +20,10 @@ mongoose.connect(
   .catch(function(err){
     console.log(err)
   });
+
+/*****************/
+/* Define Schema */
+/*****************/
 
 const playerSchema = new mongoose.Schema({
   id: Number,
@@ -27,11 +39,19 @@ const playerSchema = new mongoose.Schema({
   poisoned: Boolean
 })
 
+/*****************/
+/* Compile Model */
+/*****************/
+
 const Player = mongoose.model('Player', playerSchema)
+
+/****************/
+/* Request Data */
+/****************/
 
 const myFind = async () => {
   const players = await Player.find()
-  // console.log(players)
+  console.log(players)
 }
 
 myFind()
@@ -41,4 +61,4 @@ const myFindOne = async (name) => {
   console.log(player)
 }
 
-myFindOne('gyda')
+myFindOne('spry')
