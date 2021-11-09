@@ -32,7 +32,6 @@ mongoose.connect(
   
 const playerSchema = new mongoose.Schema({
   id: Number,
-  // TODO: Stop duplicate players from inserting
   name: {
     type: String,
     unique: true
@@ -45,7 +44,6 @@ const playerSchema = new mongoose.Schema({
   intelligence: Number,
   wisdom: Number,
   charisma: Number,
-  // TODO: Add `poisoned` property to new players with a default of false
   poisoned: {
     type: Boolean,
     default: false
@@ -88,6 +86,7 @@ app.get('/api/guild/:name', async (request, response) => {
 })
 
 app.post('/api/guild', async (request, response) => {
+  // TODO: Add some validation with a try/catch block
   const player = new Player(request.body)
 
   await player.save()
