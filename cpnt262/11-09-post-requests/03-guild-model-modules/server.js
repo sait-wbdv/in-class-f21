@@ -1,8 +1,6 @@
 /******************/
 /* Import Modules */
 /******************/
-// 1. Require mongoose and dotenv
-const mongoose = require('mongoose');
 const dotenv = require('dotenv').config();
 
 const express = require('express')
@@ -11,50 +9,7 @@ const app = express()
 app.use(express.static('public'))
 app.use(express.urlencoded({ extended: true }));
 
-/********************/
-/* Connect to Atlas */
-/********************/
-
-mongoose.connect(
-  process.env.MONGODB_URL,
-  { useUnifiedTopology: true, useNewUrlParser: true },
-  )
-  .then(function(){
-    console.log('Connected to DB...')
-  })
-  .catch(function(err){
-    console.log(err)
-  });
-  
-  /*****************/
-  /* Define Schema */
-  /*****************/
-  
-const playerSchema = new mongoose.Schema({
-  id: Number,
-  name: {
-    type: String,
-    unique: true
-  },
-  class: String,
-  race: String,
-  strength: Number,
-  dexterity: Number,
-  constitution: Number,
-  intelligence: Number,
-  wisdom: Number,
-  charisma: Number,
-  poisoned: {
-    type: Boolean,
-    default: false
-  }
-})
-
-/*****************/
-/* Compile Model */
-/*****************/
-
-const Player = mongoose.model('Player', playerSchema)
+const Player = require('./models/Player')
 
 /*****************/
 /* Define routes */
@@ -72,7 +27,6 @@ app.get('/api/guild', async (request, response) => {
 // Item route
 app.get('/api/guild/:name', async (request, response) => {
 
-  // TODO: try/catch null response when name doesn't exist
   try {
     const player = await Player.findOne({name: request.params.name})
     if (!player) {
@@ -86,8 +40,6 @@ app.get('/api/guild/:name', async (request, response) => {
 })
 
 app.post('/api/guild', async (request, response) => {
-  // TODO: Add some validation with a try/catch block
-  // TODO: redirect to static response pages depending on try/catch result
 
   try {
     const player = new Player(request.body)
