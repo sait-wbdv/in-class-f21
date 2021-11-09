@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>New Guild</title>
+</head>
+<body>
+  <form action="/api/characters" method="post">
+    <fieldset>
+      <legend>
+        Please enter your stats
+      </legend>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+      <label for="race">Race:</label>
+      <select name="race" id="race">
+        <option value="human">Human</option>
+        <option value="elf">Elf</option>
+        <option value="dwarg">Dwarf</option>
+        <option value="halfling">Halfling</option>
+        <option value="android">Steampunk Android</option>
+      </select>
+      
+      <label for="class">Class</label>
+      <select name="class" id="class">
+        <option value="fighter">Fighter</option>
+        <option value="wizard">Wizard</option>
+        <option value="rogue">Rogue</option>
+        <option value="druid">Druid</option>
+        <option value="bard">Bard</option>
+      </select>
+
+      <label for="strength">Strength</label>
+      <input type="number" name="strength" id="strength" min="1" max="16">      
+
+      <label for="dexterity">Dexterity</label>
+      <input type="number" name="dexterity" id="dexterity" min="1" max="16">      
+
+      <label for="constitution">Constitution</label>
+      <input type="number" name="constitution" id="constitution" min="1" max="16">      
+
+      <label for="intelligence">Intelligence</label>
+      <input type="number" name="intelligence" id="intelligence" min="1" max="16">      
+
+      <label for="wisdom">Wisdom</label>
+      <input type="number" name="wisdom" id="wisdom" min="1" max="16">      
+
+      <label for="charisma">Charisma</label>
+      <input type="number" name="charisma" id="charisma" min="1" max="16">      
+
+      <input type="submit" value="Create Character">
+    </fieldset>
+  </form>
+</body>
+</html>
