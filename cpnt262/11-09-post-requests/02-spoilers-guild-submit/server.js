@@ -79,15 +79,13 @@ app.get('/api/guild/:name', async (request, response) => {
   
 })
 
-
-// 1. Turn callback into an async function
+// TODO: Add `poisoned` property to new players with a default of false
+// TODO: Stop duplicate players from inserting
 app.post('/api/guild', async (request, response) => {
-  // 2. Create an instance of our model
   const player = new Player(request.body)
 
-  // 3. Save our data to Atlas
   await player.save()
-  
+
   console.log(player)
   response.send(player)
 })
