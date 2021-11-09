@@ -1,0 +1,9 @@
+form {
+  max-width: min-content;
+  margin: auto;
+  padding: 2rem;
+}
+
+input, label {
+  display: block;
+}
