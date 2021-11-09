@@ -87,6 +87,7 @@ app.get('/api/guild/:name', async (request, response) => {
 
 app.post('/api/guild', async (request, response) => {
   // TODO: Add some validation with a try/catch block
+  // TODO: redirect to static response pages depending on try/catch result
   const player = new Player(request.body)
 
   await player.save()
